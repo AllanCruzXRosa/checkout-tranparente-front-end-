@@ -1,0 +1,50 @@
+<div class="container main-container">
+
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="pacman" [fullScreen]="true">
+        <p style="color: white"> Processando... </p>
+    </ngx-spinner>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+            <img class="card-img-top" src="/assets/logo_pagseguro.png"  alt="">
+        </div>
+    </div>
+
+    <h1>Lista de Transações</h1>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/pagamentos/novo']">Novo Pagamento</a>
+        
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Comprador</th>
+                <th>Valor</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tr *ngFor="let transacao of transacoes">
+            <td>
+                {{ transacao.code }}
+            </td>
+            <td>
+                {{transacao.date |  date: 'dd/MM/yyyy' }}
+            </td>
+
+            <td>
+                {{transacao.detailSenderName }}
+            </td>
+
+            <td>
+                {{ transacao.grossAmount | currency }}
+            </td>
+
+            
+        </tr>
+    </table>
+</div>

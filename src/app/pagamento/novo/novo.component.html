@@ -1,0 +1,260 @@
+<div class="container main-container">
+
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+            <img class="card-img-top" src="/assets/logo_pagseguro.png"  alt="">
+        </div>
+    </div>
+
+    <h3>Pagamento por cartão de credito </h3>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="form-group ">
+                            <label class="control-label">Número Cartão</label>
+                            <div>
+                                <input class="div__ncartao" placeholder="4111111111111111" (blur)="buscaBandeira()"
+                                    name="numCard" [(ngModel)]="pagamento.cartao.numCard" #numCard="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4 ">
+                        <div class="form-group ">
+                            <label class="control-label">Mês validade Cartão</label>
+                            <div>
+
+                                <select placeholder="Mês" name="mesValidadeCard"
+                                    [(ngModel)]="pagamento.cartao.mesValidadeCard" #mesValidadeCard="ngModel"
+                                    class="div__select">
+                                    <option [value]="10">10</option>
+                                    <option [value]="11">11</option>
+                                    <option [value]="12">12</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Ano validade Cartão</label>
+                            <div>
+
+                                <select placeholder="Ano" name="anoValidadeCard"
+                                    [(ngModel)]="pagamento.cartao.anoValidadeCard" #anoValidadeCard="ngModel"
+                                    class="div__select">
+                                    <option [value]="2026">2026</option>
+                                    <option [value]="2027">2027</option>
+                                    <option [value]="2028">2028</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+
+                        <div class="form-group">
+                            <label class="control-label">Cód. CVV</label>
+                            <div>
+                                <input placeholder="3 a 4 digitos" name="codSegCard"
+                                    [(ngModel)]="pagamento.cartao.codSegCard" #codSegCard="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Parcelas</label>
+                            <div>
+
+                                <select name="parcela" [ngModel]="parcelaObj"
+                                    (ngModelChange)="parcelaSelecionada($event)" #parcela="ngModel" class="div__select">
+                                    <option *ngFor="let p of parcelas"
+                                        [value]="p['quantity']+'|'+p['installmentAmount']">
+                                        {{ p['quantity'] + "x " + p['installmentAmount'] }}</option>
+                                </select>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Total</label>
+
+                            <div>
+
+                                <input placeholder="Valor Total" name="total" [(ngModel)]="valorTotal" #total="ngModel"
+                                    disabled>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+                <h4>Dados Pessoais</h4>
+                <hr>
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Nome</label>
+                            <div>
+                                <input placeholder="Nome" name="nome" [(ngModel)]="pagamento.comprador.nome"
+                                    #nome="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Data Nascimento</label>
+                            <div>
+                                <input placeholder="Data Nascimento" name="nascimento"
+                                    [(ngModel)]="pagamento.comprador.nascimento" #nascimento="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">N° Contato</label>
+                            <div>
+                                <input placeholder="(DD) 123456789" name="telefone"
+                                    [(ngModel)]="pagamento.comprador.contato.telefone" #telefone="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">E-mail</label>
+                            <div>
+                                <input type="Email" name="email" [(ngModel)]="pagamento.comprador.contato.email"
+                                    #email="ngModel" placeholder="E-mail Contato">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Endereço</label>
+                            <div>
+                                <input placeholder="Endereço" name="logradouro"
+                                    [(ngModel)]="pagamento.comprador.endereco.logradouro" #logradouro="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Número</label>
+                            <div>
+                                <input placeholder="Número" name="numero"
+                                    [(ngModel)]="pagamento.comprador.endereco.numero" #numero="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Bairro</label>
+                            <div>
+                                <input placeholder="Bairro" name="bairro"
+                                    [(ngModel)]="pagamento.comprador.endereco.bairro" #bairro="ngModel">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">CEP</label>
+                            <div>
+                                <input placeholder="CEP" name="cep" [(ngModel)]="pagamento.comprador.endereco.cep"
+                                    #cep="ngModel">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label class="control-label">Estado</label>
+                            <div>
+                                <select name="estado" [(ngModel)]="pagamento.comprador.endereco.estado"
+                                    #estado="ngModel" class="div__select">
+
+                                    <option [value]="'ba'">Bahia</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label class="control-label">Cidade</label>
+                            <div>
+                                <select name="cidade" [(ngModel)]="pagamento.comprador.endereco.cidade"
+                                    #cidade="ngModel" class="div__select">
+
+                                    <option [value]="'Salvador'">Salvador</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <br>
+
+
+                <div class="text-right" style="margin-top: 30px;">
+                    <button class="btn btn-primary" type="submit">Pagar</button>&nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/pagamentos/listar-todos']">Listar transações</a>
+
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
