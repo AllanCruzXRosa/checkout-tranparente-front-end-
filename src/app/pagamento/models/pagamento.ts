@@ -6,7 +6,7 @@ export class Pagamento{
     public id:number;
     public parcelaQuantidade: number;
     public parcelaValor: number;
-   // public valorTotal : number;
+    public produtoId : number;
     public cartao: Cartao = new Cartao;
     public comprador: Comprador = new Comprador;
 

@@ -11,6 +11,8 @@ import { PagamentoService } from './services/pagamento.service';
 import { NovoComponent } from './novo/novo.component';
 import { VariableGlobal } from '../services/variable.global.service';
 import { ListaComponent } from './lista/lista.component';
+import { ProdutoResolve } from '../produto/services/produto.resolve';
+import { ProdutoService } from '../produto/services/produto.service';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ListaComponent } from './lista/lista.component';
   ],
   providers: [
     PagamentoService,
-    VariableGlobal
+    VariableGlobal,
+    ProdutoResolve,
+    ProdutoService
    
   ]
 })

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 
-
-import { Transacao } from '../models.ts/transacao';
+import { Transacao } from '../models/transacao';
 import { PagamentoService } from '../services/pagamento.service';
 
 @Component({

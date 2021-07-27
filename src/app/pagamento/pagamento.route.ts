@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProdutoResolve } from '../produto/services/produto.resolve';
 
 import { ListaComponent } from './lista/lista.component';
 import { NovoComponent } from './novo/novo.component';
@@ -11,7 +12,13 @@ const pagamentoRouterConfig: Routes = [
     {
         path: '', component: PagamentoAppComponent,
         children: [
-            { path: 'novo', component: NovoComponent },
+            { path: 'novo/:id', component: NovoComponent ,
+
+            resolve: {
+                produto: ProdutoResolve
+            }
+
+             },
             { path: 'listar-todos', component: ListaComponent },
            
         ]

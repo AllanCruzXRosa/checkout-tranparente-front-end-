@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,6 +10,7 @@ import { VariableGlobal } from 'src/app/services/variable.global.service';
 import { Pagamento } from '../models/pagamento';
 import { Parcela } from '../models/parcela';
 import { Transacao } from '../models/transacao';
+import { Produto } from 'src/app/produto/models/produto';
 
 declare var PagSeguroDirectPayment: any;
 
@@ -27,6 +28,8 @@ export class NovoComponent {
   public parcelas: Array<Parcela> = [];
   public parcelaObj: Parcela;
   public valorTotal: string;
+  public valorFrete: string;
+  public produto = new Produto();
   month = null;
 
   hashCode: any;
@@ -35,11 +38,13 @@ export class NovoComponent {
     private pagamentoService: PagamentoService,
     private variableGlobal: VariableGlobal,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
 
+    this.produto = this.route.snapshot.data['produto'];
+    console.log(this.produto );
     this.carregaJavascriptPagseguro();
-
   }
 
   //CARREGA O JAVASCRIPT DO PAGSEGURO (A EXPLICAÇÃO ESTA FUNÇÃO ESTÁ LOGO ABAIXO)
@@ -55,6 +60,9 @@ export class NovoComponent {
 
       });
 
+      this.setProduto();
+      this.setFrete();
+
       this.getSessao();
 
       console.log(PagSeguroDirectPayment);
@@ -62,6 +70,14 @@ export class NovoComponent {
       this.variableGlobal.setStatusScript(true);
     }
 
+  }
+
+  setProduto(){
+    this.pagamento.produtoId = this.produto.id;   
+  }
+
+  setFrete(){
+    this.valorFrete = 'Total : R$ 10,00';
   }
 
   //BUSCA UM ID DE SESSÃO NO BACK-END
@@ -115,7 +131,7 @@ export class NovoComponent {
 
     PagSeguroDirectPayment.getInstallments({
 
-      amount: '100',                          //valor total da compra (deve ser informado)
+      amount: this.produto.preco,                          //valor total da compra (deve ser informado)
       brand: this.pagamento.cartao.bandCard,  //bandeira do cartão (capturado na função buscaBandeira)
       maxInstallmentNoInterest: 3,            //maxInstallmentNoInterest - parcelamento sem juros (quantidade de parcelas)
       success: response => {
@@ -136,10 +152,26 @@ export class NovoComponent {
 
     this.pagamento.parcelaQuantidade = list[0];
     this.pagamento.parcelaValor = list[1];
-    this.valorTotal = 'Total : R$ 100,00';
+    
 
     console.log(this.pagamento);
 
+    this.setValorTotal();
+
+
+  }
+
+  setValorTotal(){
+
+    if(this.produto.id == 1){
+
+      this.valorTotal = 'Total : R$ 110,00';
+
+    }else{
+
+      this.valorTotal = 'Total : R$ 210,00';
+
+    }
 
   }
 

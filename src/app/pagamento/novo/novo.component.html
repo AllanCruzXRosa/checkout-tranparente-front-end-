@@ -113,8 +113,131 @@
 
 
                 </div>
+                <br>
+
+                <h4>Produto</h4>
+                <hr>
+                <div class="row">
 
 
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Produto</label>
+                            <div>
+                                <input placeholder="Produto" name="descricao"
+                                    [(ngModel)]="produto.descricao" #descricao="ngModel" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Valor</label>
+                            <div>
+                                <input placeholder="preco" name="preco"
+                                    [(ngModel)]="produto.preco" #preco="ngModel" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <br>
+
+
+                <h4>Frete</h4>
+                <hr>
+                <div class="row">
+
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">Endereço</label>
+                        <div>
+                            <input placeholder="Endereço" name="logradouro"
+                                [(ngModel)]="pagamento.comprador.endereco.logradouro" #logradouro="ngModel" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">Número</label>
+                        <div>
+                            <input placeholder="Número" name="numero"
+                                [(ngModel)]="pagamento.comprador.endereco.numero" #numero="ngModel" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">Bairro</label>
+                        <div>
+                            <input placeholder="Bairro" name="bairro"
+                                [(ngModel)]="pagamento.comprador.endereco.bairro" #bairro="ngModel" disabled>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">CEP</label>
+                        <div>
+                            <input placeholder="CEP" name="cep" [(ngModel)]="pagamento.comprador.endereco.cep"
+                                #cep="ngModel" disabled>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">Estado</label>
+                        <div>
+
+                            <input placeholder="estado" name="estado" [(ngModel)]="pagamento.comprador.endereco.estado"
+                                #estado="ngModel" disabled>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">Cidade</label>
+                        <div>
+
+                            <input placeholder="cidade" name="cidade" [(ngModel)]="pagamento.comprador.endereco.cidade"
+                            #cidade="ngModel" disabled>
+                         
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="control-label">Valor Frete</label>
+
+                        <div>
+
+                            <input placeholder="Valor Total" name="frete" [(ngModel)]="valorFrete" #total="ngModel"
+                                disabled>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                <br>
 
                 <h4>Dados Pessoais</h4>
                 <hr>
@@ -125,7 +248,7 @@
                             <label class="control-label">Nome</label>
                             <div>
                                 <input placeholder="Nome" name="nome" [(ngModel)]="pagamento.comprador.nome"
-                                    #nome="ngModel">
+                                    #nome="ngModel" disabled>
                             </div>
                         </div>
                     </div>
@@ -136,7 +259,7 @@
                             <label class="control-label">Data Nascimento</label>
                             <div>
                                 <input placeholder="Data Nascimento" name="nascimento"
-                                    [(ngModel)]="pagamento.comprador.nascimento" #nascimento="ngModel">
+                                    [(ngModel)]="pagamento.comprador.nascimento" #nascimento="ngModel" disabled>
                             </div>
                         </div>
                     </div>
@@ -147,7 +270,7 @@
                             <label class="control-label">N° Contato</label>
                             <div>
                                 <input placeholder="(DD) 123456789" name="telefone"
-                                    [(ngModel)]="pagamento.comprador.contato.telefone" #telefone="ngModel">
+                                    [(ngModel)]="pagamento.comprador.contato.telefone" #telefone="ngModel" disabled>
                             </div>
                         </div>
                     </div>
@@ -158,88 +281,10 @@
                             <label class="control-label">E-mail</label>
                             <div>
                                 <input type="Email" name="email" [(ngModel)]="pagamento.comprador.contato.email"
-                                    #email="ngModel" placeholder="E-mail Contato">
+                                    #email="ngModel" placeholder="E-mail Contato" disabled>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label class="control-label">Endereço</label>
-                            <div>
-                                <input placeholder="Endereço" name="logradouro"
-                                    [(ngModel)]="pagamento.comprador.endereco.logradouro" #logradouro="ngModel">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label class="control-label">Número</label>
-                            <div>
-                                <input placeholder="Número" name="numero"
-                                    [(ngModel)]="pagamento.comprador.endereco.numero" #numero="ngModel">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label class="control-label">Bairro</label>
-                            <div>
-                                <input placeholder="Bairro" name="bairro"
-                                    [(ngModel)]="pagamento.comprador.endereco.bairro" #bairro="ngModel">
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label class="control-label">CEP</label>
-                            <div>
-                                <input placeholder="CEP" name="cep" [(ngModel)]="pagamento.comprador.endereco.cep"
-                                    #cep="ngModel">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-8">
-                        <div class="form-group">
-                            <label class="control-label">Estado</label>
-                            <div>
-                                <select name="estado" [(ngModel)]="pagamento.comprador.endereco.estado"
-                                    #estado="ngModel" class="div__select">
-
-                                    <option [value]="'ba'">Bahia</option>
-                                </select>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-8">
-                        <div class="form-group">
-                            <label class="control-label">Cidade</label>
-                            <div>
-                                <select name="cidade" [(ngModel)]="pagamento.comprador.endereco.cidade"
-                                    #cidade="ngModel" class="div__select">
-
-                                    <option [value]="'Salvador'">Salvador</option>
-                                </select>
-
-
-                            </div>
-                        </div>
-                    </div>
-
 
 
                 </div>
@@ -249,7 +294,9 @@
 
                 <div class="text-right" style="margin-top: 30px;">
                     <button class="btn btn-primary" type="submit">Pagar</button>&nbsp;
+                    <a class="btn btn-info" [routerLink]="['/produtos/listar-todos']">Listar Produtos</a>&nbsp;
                     <a class="btn btn-info" [routerLink]="[ '/pagamentos/listar-todos']">Listar transações</a>
+                    
 
 
                 </div>
