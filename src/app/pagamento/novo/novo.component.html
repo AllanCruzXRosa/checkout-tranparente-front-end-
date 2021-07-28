@@ -3,7 +3,7 @@
 
     <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-            <img class="card-img-top" src="/assets/logo_pagseguro.png"  alt="">
+            <img class="card-img-top" src="/assets/logo_pagseguro.png" alt="">
         </div>
     </div>
 
@@ -110,8 +110,6 @@
                         </div>
                     </div>
 
-
-
                 </div>
                 <br>
 
@@ -120,12 +118,21 @@
                 <div class="row">
 
 
+                    <div class="col-2">
+                        <div class="form-group">
+                            <img *ngIf="produto.id == 1" class="card-img-top" src="/assets/mouse.jpg" 
+                            alt="">
+                            <img *ngIf="produto.id == 2" class="card-img-top" src="/assets/teclado.jpg" 
+                                 alt="">
+                        </div>
+                    </div>
+
                     <div class="col-4">
                         <div class="form-group">
                             <label class="control-label">Produto</label>
                             <div>
-                                <input placeholder="Produto" name="descricao"
-                                    [(ngModel)]="produto.descricao" #descricao="ngModel" disabled>
+                                <input placeholder="Produto" name="descricao" [(ngModel)]="produto.descricao"
+                                    #descricao="ngModel" disabled>
                             </div>
                         </div>
                     </div>
@@ -135,8 +142,8 @@
                         <div class="form-group">
                             <label class="control-label">Valor</label>
                             <div>
-                                <input placeholder="preco" name="preco"
-                                    [(ngModel)]="produto.preco" #preco="ngModel" disabled>
+                                <input placeholder="preco" name="preco" [(ngModel)]="produto.preco" #preco="ngModel"
+                                    disabled>
                             </div>
                         </div>
                     </div>
@@ -152,89 +159,90 @@
 
 
 
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">Endereço</label>
-                        <div>
-                            <input placeholder="Endereço" name="logradouro"
-                                [(ngModel)]="pagamento.comprador.endereco.logradouro" #logradouro="ngModel" disabled>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">Número</label>
-                        <div>
-                            <input placeholder="Número" name="numero"
-                                [(ngModel)]="pagamento.comprador.endereco.numero" #numero="ngModel" disabled>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">Bairro</label>
-                        <div>
-                            <input placeholder="Bairro" name="bairro"
-                                [(ngModel)]="pagamento.comprador.endereco.bairro" #bairro="ngModel" disabled>
-
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Endereço</label>
+                            <div>
+                                <input placeholder="Endereço" name="logradouro"
+                                    [(ngModel)]="pagamento.comprador.endereco.logradouro" #logradouro="ngModel"
+                                    disabled>
+                            </div>
                         </div>
                     </div>
 
-                </div>
 
-
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">CEP</label>
-                        <div>
-                            <input placeholder="CEP" name="cep" [(ngModel)]="pagamento.comprador.endereco.cep"
-                                #cep="ngModel" disabled>
-
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Número</label>
+                            <div>
+                                <input placeholder="Número" name="numero"
+                                    [(ngModel)]="pagamento.comprador.endereco.numero" #numero="ngModel" disabled>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">Estado</label>
-                        <div>
 
-                            <input placeholder="estado" name="estado" [(ngModel)]="pagamento.comprador.endereco.estado"
-                                #estado="ngModel" disabled>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Bairro</label>
+                            <div>
+                                <input placeholder="Bairro" name="bairro"
+                                    [(ngModel)]="pagamento.comprador.endereco.bairro" #bairro="ngModel" disabled>
 
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">CEP</label>
+                            <div>
+                                <input placeholder="CEP" name="cep" [(ngModel)]="pagamento.comprador.endereco.cep"
+                                    #cep="ngModel" disabled>
+
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Estado</label>
+                            <div>
 
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">Cidade</label>
-                        <div>
+                                <input placeholder="estado" name="estado"
+                                    [(ngModel)]="pagamento.comprador.endereco.estado" #estado="ngModel" disabled>
 
-                            <input placeholder="cidade" name="cidade" [(ngModel)]="pagamento.comprador.endereco.cidade"
-                            #cidade="ngModel" disabled>
-                         
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="col-4">
-                    <div class="form-group">
-                        <label class="control-label">Valor Frete</label>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Cidade</label>
+                            <div>
 
-                        <div>
+                                <input placeholder="cidade" name="cidade"
+                                    [(ngModel)]="pagamento.comprador.endereco.cidade" #cidade="ngModel" disabled>
 
-                            <input placeholder="Valor Total" name="frete" [(ngModel)]="valorFrete" #total="ngModel"
-                                disabled>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label">Valor Frete</label>
+
+                            <div>
+
+                                <input placeholder="Valor Total" name="frete" [(ngModel)]="valorFrete" #total="ngModel"
+                                    disabled>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <br>
@@ -296,7 +304,7 @@
                     <button class="btn btn-primary" type="submit">Pagar</button>&nbsp;
                     <a class="btn btn-info" [routerLink]="['/produtos/listar-todos']">Listar Produtos</a>&nbsp;
                     <a class="btn btn-info" [routerLink]="[ '/pagamentos/listar-todos']">Listar transações</a>
-                    
+
 
 
                 </div>

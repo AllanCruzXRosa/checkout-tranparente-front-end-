@@ -16,10 +16,8 @@
                 
                 <div  *ngFor="let produto of produtos">
 
-                <img *ngIf="produto.id == 1" class="card-img-top" src="/assets/mouse.jpg" height="164px" width="253px" alt="">
-                <img *ngIf="produto.id == 2" class="card-img-top" src="/assets/teclado.jpg" height="164px" width="253px" alt="">
-             
-
+                <img *ngIf="produto.id == 1" class="card-img-top" src="/assets/mouse.jpg"  alt="">
+                <img *ngIf="produto.id == 2" class="card-img-top" src="/assets/teclado.jpg" alt="">        
                                
                 <div class="card-body">
                     <h4 class="card-title">{{produto.descricao}}</h4>

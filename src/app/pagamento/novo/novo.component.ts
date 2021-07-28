@@ -11,6 +11,7 @@ import { Pagamento } from '../models/pagamento';
 import { Parcela } from '../models/parcela';
 import { Transacao } from '../models/transacao';
 import { Produto } from 'src/app/produto/models/produto';
+import { ConstantesUtils } from 'src/app/utils/contantes-utils';
 
 declare var PagSeguroDirectPayment: any;
 
@@ -20,9 +21,7 @@ declare var PagSeguroDirectPayment: any;
   styleUrls: ['./novo.component.scss']
 })
 export class NovoComponent {
-
-  private static JS_PAGSEGURO = 'https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js';
-
+ 
   public dados = new Dados();
   public pagamento = new Pagamento();
   public parcelas: Array<Parcela> = [];
@@ -55,7 +54,7 @@ export class NovoComponent {
       new Promise<void>((resolve) => {
         let script: HTMLScriptElement = document.createElement('script');
         script.addEventListener('load', r => resolve());
-        script.src = NovoComponent.JS_PAGSEGURO;
+        script.src = ConstantesUtils.JS_PAGSEGURO;
         document.head.appendChild(script);
 
       });
@@ -77,7 +76,7 @@ export class NovoComponent {
   }
 
   setFrete(){
-    this.valorFrete = 'Total : R$ 10,00';
+     this.valorFrete = ConstantesUtils.FRETE_BAHIA;
   }
 
   //BUSCA UM ID DE SESSÃO NO BACK-END
@@ -163,14 +162,12 @@ export class NovoComponent {
 
   setValorTotal(){
 
-    if(this.produto.id == 1){
+    if(this.produto.id == 1){    
 
-      this.valorTotal = 'Total : R$ 110,00';
-
+      this.valorTotal = ConstantesUtils.VALOR_TOTAL_MOUSE;
     }else{
-
-      this.valorTotal = 'Total : R$ 210,00';
-
+      
+     this.valorTotal = ConstantesUtils.VALOR_TOTAL_TECLADO;
     }
 
   }
